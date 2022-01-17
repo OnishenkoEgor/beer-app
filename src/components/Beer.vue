@@ -2,7 +2,7 @@
   <block :error="beerError" :loading="beerLoading" class="beer">
     <div class="beer__wrapper">
       <div class="beer__image">
-        <img src="" alt="" />
+        <img :src="beerImage" alt="" />
       </div>
       <div class="beer__content">
         <name class="beer__title"> {{ name }}</name>
@@ -12,7 +12,7 @@
             <p>{{ addItem }}</p>
           </div>
         </div>
-        <Button @click="updateBeer">Randomize</Button>
+        <Button @click="updateBeer" class="beer__btn">Randomize</Button>
       </div>
     </div>
   </block>
@@ -25,8 +25,15 @@ import Name from "./Name.vue";
 import List from "./List.vue";
 import Button from "./Button.vue";
 
+import beerImage from "@/assets/img/beer_image.png";
+
 export default {
   components: { Block, Name, List, Button },
+  data() {
+    return {
+      beerImage,
+    };
+  },
   computed: {
     ...mapState({
       beerLoading: (state) => state.beerStore.loading,
@@ -60,14 +67,29 @@ export default {
     column-gap: 25px;
   }
   &__image {
+    position: relative;
     background-color: rgba(#fff, 0.5);
     border-radius: 8px;
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 90%;
+      max-height: 90%;
+      width: auto;
+    }
   }
   &__info {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: left;
     row-gap: 25px;
+    column-gap: 15px;
+    margin-bottom: 20px;
+  }
+  &__title {
+    margin-bottom: 30px;
   }
   &__additional {
     display: grid;
@@ -84,6 +106,44 @@ export default {
         line-height: 24px;
         color: #665;
       }
+    }
+  }
+  &__btn {
+    padding-left: 75px;
+    padding-right: 75px;
+  }
+}
+@media (max-width: 650px) {
+  .beer {
+    &__wrapper {
+      grid-template-columns: 50% 1fr;
+    }
+    &__info {
+      grid-template-columns: 1fr;
+      row-gap: 5px;
+    }
+    &__additional {
+      grid-template-columns: 1fr;
+      row-gap: 5px;
+    }
+    &__btn {
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .beer {
+    &__wrapper {
+      grid-template-columns: 1fr;
+      row-gap: 40px;
+    }
+    &__image {
+      height: 40vh;
+    }
+    &__info {
+      grid-template-columns: 1fr 1fr;
     }
   }
 }

@@ -4,7 +4,7 @@ import BeerPage from '../views/BeerPage.vue'
 const routes = [
   {
     path: '/',
-    name: 'BeerPage',
+    name: 'PersonalAreaPage',
     component: BeerPage
   },
 ]

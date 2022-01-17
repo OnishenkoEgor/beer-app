@@ -1,6 +1,6 @@
 <template>
   <div class="beer-page page">
-    <div class="page__wrapper container">
+    <div class="page__wrapper beer-page__wrapper container">
       <h1 class="page__title">Personal Area</h1>
       <block :error="userError" :loading="userLoading">
         <user-info
@@ -114,11 +114,15 @@ export default {
     margin-bottom: 40px;
   }
 }
-.beer-page { 
-  padding: 40px 0; 
+.beer-page {
+  padding: 40px 0;
   min-height: 100vh;
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
   &__boards {
-    padding-top: 40px;
+    padding-top: 30px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 16px;
@@ -128,6 +132,27 @@ export default {
     display: grid;
     column-gap: 16px;
     grid-template-columns: calc(60% + 32px) 1fr;
+  }
+}
+@media (max-width: 991px) {
+  .beer-page {
+    &__boards {
+      grid-template-columns: 1fr 1fr;
+      row-gap: 30px;
+    }
+    &__content {
+      grid-row-start: 3;
+      grid-template-columns: 1fr;
+      row-gap: 30px;
+      padding-top: 30px;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .beer-page {
+    &__boards {
+      grid-template-columns: 1fr;
+    }
   }
 }
 </style>

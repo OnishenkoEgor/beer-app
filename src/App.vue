@@ -20,8 +20,21 @@ a {
   text-decoration: none;
   color: inherit;
 }
+*{
+  margin: 0;
+}
 .container {
   max-width: 1200px;
   margin: 0 auto;
+}
+@media (max-width: 1400px) {
+  .container {
+    max-width: 90vw;
+  }
+}
+@media (max-width: 560px) {
+  .container {
+    max-width: 95vw;
+  }
 }
 </style>

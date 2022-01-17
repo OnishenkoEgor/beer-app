@@ -1,5 +1,5 @@
 <template>
-  <button>
+  <button class="btn">
     <slot></slot>
   </button>
 </template>
@@ -9,8 +9,9 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-button {
-  padding: 15px 75px;
+.btn {
+  padding-top:15px;
+  padding-bottom: 15px;
   font-size: 20px;
   line-height: 24px;
   color: #665;

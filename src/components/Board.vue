@@ -24,6 +24,9 @@ export default {
         borderRadius: "16px",
         backgroundColor: "#F7F7F7",
         padding: "15px 20px",
+        display: "grid",
+        rowGap: "20px",
+        alignContent: "start",
       },
     };
   },

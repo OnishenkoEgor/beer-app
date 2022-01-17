@@ -89,4 +89,35 @@ export default {
     align-items: center;
   }
 }
+@media (max-width: 769px) {
+  .user-info {
+    &__wrapper {
+      grid-template-columns: max-content max-content;
+      justify-content: space-between;
+    }
+    &__main {
+      align-items: center;
+    }
+    &__image {
+      padding-bottom: 100%;
+    }
+    &__list {
+      grid-template-columns: 1fr;
+      row-gap: 5px;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .user-info {
+    &__wrapper {
+      grid-template-columns: 70px 1fr;
+    }
+    &__main {
+      grid-column: 1/3;
+    }
+    &__list {
+      grid-column: 2/3;
+    }
+  }
+}
 </style>

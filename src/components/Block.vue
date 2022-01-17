@@ -6,9 +6,7 @@
     <div v-else-if="loading" class="block__loading">
       <img src="@/assets/gif/loader.gif" alt="" />
     </div>
-    <div v-else class="block__content">
-      <slot></slot>
-    </div>
+    <slot v-else></slot>
   </div>
 </template>
 
