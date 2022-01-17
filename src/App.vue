@@ -20,4 +20,8 @@ a {
   text-decoration: none;
   color: inherit;
 }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 </style>

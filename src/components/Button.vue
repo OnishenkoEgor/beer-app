@@ -8,13 +8,22 @@
 export default {};
 </script>
 
-<style style="scss" scoped>
+<style lang="scss" scoped>
 button {
-    padding: 15px 75px;
-    font-size: 20px;
-    line-height: 24px;
-    color:#665;
-    border-radius: 8px;
-    background-color: #FFC226;
+  padding: 15px 75px;
+  font-size: 20px;
+  line-height: 24px;
+  color: #665;
+  border-radius: 8px;
+  background-color: #ffc226;
+  outline: none;
+  border: none;
+  transition: .3s all;
+  &:hover{
+    background: #ffc83c;
+  }
+  &:active{
+    background-color: #ffbc13;
+  }
 }
 </style>

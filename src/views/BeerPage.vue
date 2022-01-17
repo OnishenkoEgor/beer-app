@@ -1,43 +1,53 @@
 <template>
   <div class="beer-page page">
-    <div class="page__wrapper">
-      <div class="page__content">
-        <h1 class="page__title">Personal Area</h1>
-        <block :error="userError" :loading="userLoading">
-          <user-info
-            :image="userImage"
-            :firstName="userFirstName"
-            :lastName="userLastName"
-            :nickName="userNickName"
-            :birthday="userBirthDay"
-            :email="userMail"
-            :phone="userPhone"
-          ></user-info>
-        </block>
-        <div class="beer-page__boards">
-          <board
-            :error="userError"
-            :loading="userLoading"
-            :name="'Доп инфо'"
-            :info="getAdditional"
-          ></board>
-          <board
-            :error="userError"
-            :loading="userLoading"
-            :name="'Работа'"
-            :info="getJob"
-          ></board>
-          <board
-            :error="userError"
-            :loading="userLoading"
-            :name="'Адрес'"
-            :info="getAddress"
-          ></board>
-        </div>
-        <beer></beer>
+    <div class="page__wrapper container">
+      <h1 class="page__title">Personal Area</h1>
+      <block :error="userError" :loading="userLoading">
+        <user-info
+          :image="userImage"
+          :firstName="userFirstName"
+          :lastName="userLastName"
+          :nickName="userNickName"
+          :birthday="userBirthDay"
+          :email="userMail"
+          :phone="userPhone"
+        ></user-info>
+      </block>
+      <div class="beer-page__boards">
+        <board
+          :error="userError"
+          :loading="userLoading"
+          :name="'Additional info'"
+          :info="getAdditional"
+        ></board>
+        <board
+          :error="userError"
+          :loading="userLoading"
+          :name="'Job'"
+          :info="getJob"
+        ></board>
+        <board
+          :error="userError"
+          :loading="userLoading"
+          :name="'Address'"
+          :info="getAddress"
+        ></board>
+        <board
+          :error="userError"
+          :loading="userLoading"
+          :name="'Card Info'"
+          :info="getCard"
+        ></board>
       </div>
-      <div class="page__sidebar">
-        <sidebar></sidebar>
+      <div class="beer-page__content">
+        <beer></beer>
+        <board
+          :error="userError"
+          :loading="userLoading"
+          :name="'Subscription info'"
+          :info="getSubscription"
+        >
+        </board>
       </div>
     </div>
   </div>
@@ -46,14 +56,13 @@
 <script>
 import Block from "../components/Block.vue";
 import Name from "../components/Name.vue";
-import Sidebar from "../components/Sidebar.vue";
 import UserInfo from "../components/UserInfo.vue";
 import Board from "../components/Board.vue";
 import Beer from "../components/Beer.vue";
 import { mapState, mapGetters } from "vuex";
 export default {
   name: "BeerPage",
-  components: { Block, Name, Sidebar, UserInfo, Board, Beer },
+  components: { Block, Name, UserInfo, Board, Beer },
   computed: {
     ...mapState({
       userLoading: (state) => state.userStore.loading,
@@ -70,6 +79,8 @@ export default {
       getAddress: "userStore/getAddress",
       getJob: "userStore/getJob",
       getAdditional: "userStore/getAdditional",
+      getCard: "userStore/getCard",
+      getSubscription: "userStore/getSubscription",
     }),
   },
   methods: {
@@ -93,18 +104,6 @@ export default {
 <style lang="scss">
 .page {
   &__wrapper {
-    display: grid;
-    grid-template-columns: 1fr 350px;
-    min-height: 100vh;
-  }
-  &__content {
-    padding-left: 150px;
-    padding-right: 30px;
-    padding-top: 55px;
-  }
-  &__sidebar {
-    background: #f0f0f0;
-    height: 100%;
   }
   &__title {
     font-size: 28px;
@@ -115,12 +114,20 @@ export default {
     margin-bottom: 40px;
   }
 }
-.beer-page {
+.beer-page { 
+  padding: 40px 0; 
+  min-height: 100vh;
   &__boards {
     padding-top: 40px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     column-gap: 16px;
+  }
+  &__content {
+    padding-top: 20px;
+    display: grid;
+    column-gap: 16px;
+    grid-template-columns: calc(60% + 32px) 1fr;
   }
 }
 </style>

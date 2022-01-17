@@ -34,6 +34,16 @@ export const userStore = {
             return gender && social_insurance_number ? [
                 gender, social_insurance_number
             ] : []
+        },
+        getCard({ user: { credit_card } }) {
+            return credit_card ? [
+                credit_card.cc_number
+            ] : []
+        },
+        getSubscription({ user: { subscription } }) {
+            return subscription ? [
+                subscription.plan, subscription.status, subscription.payment_method, subscription.term
+            ] : []
         }
     },
     actions: {

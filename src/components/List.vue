@@ -11,9 +11,6 @@ export default {
   props: {
     elements: Array,
   },
-  updated() {
-    console.log(this.props);
-  },
 };
 </script>
 

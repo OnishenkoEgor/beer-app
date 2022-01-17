@@ -39,13 +39,11 @@ export default {
     justify-content: center;
     font-size: 30px;
     color: #665;
-    background: #f7f7f7;
     border-radius: 16px;
   }
   &__loading {
     position: relative;
     min-height: 100px;
-    background: #f7f7f7;
     border-radius: 16px;
     img {
       position: absolute;

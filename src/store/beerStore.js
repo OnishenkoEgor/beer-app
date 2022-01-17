@@ -16,8 +16,15 @@ export const beerStore = {
         }
     },
     getters: {
-        getBeerInfo({beer:{brand,}}){
-
+        getBeerInfo({ beer: { brand, name, style, hop, yeast, malts } }) {
+            return [
+                brand, name, style, hop, yeast, malts
+            ]
+        },
+        getAdditional({ beer: { ibu, alcohol, blg } }) {
+            return [
+                ibu, alcohol, blg
+            ]
         }
     },
     actions: {
