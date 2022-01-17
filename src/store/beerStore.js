@@ -16,7 +16,9 @@ export const beerStore = {
         }
     },
     getters: {
+        getBeerInfo({beer:{brand,}}){
 
+        }
     },
     actions: {
         loadBeer({ commit }) {
